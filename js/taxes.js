@@ -148,11 +148,28 @@ const TAX_REGIMES = {
   ]
 };
 
+const CUSTOM_REGIME = {
+  id: 'custom',
+  label: 'Свой %',
+  desc: 'Фиксированный процент с общей суммы на всю команду',
+  calc: (amount, rate = 5) => {
+    const tax = amount * (rate / 100);
+    return {
+      net: amount - tax,
+      taxes: [{ name: `Налог ${rate}%`, amount: tax }],
+      total_tax: tax
+    };
+  }
+};
+
 function getTaxRegimes(country) {
-  return TAX_REGIMES[country] || [];
+  return [...(TAX_REGIMES[country] || []), CUSTOM_REGIME];
 }
 
-function calcTax(regimeId, amount, country) {
+function calcTax(regimeId, amount, country, customRate) {
+  if (regimeId === 'custom') {
+    return CUSTOM_REGIME.calc(amount, customRate ?? 5);
+  }
   const regimes = getTaxRegimes(country);
   const regime  = regimes.find(r => r.id === regimeId);
   if (!regime) return { net: amount, taxes: [], total_tax: 0 };

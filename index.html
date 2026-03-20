@@ -204,6 +204,7 @@
           <button class="type-btn" data-type="work">🔨 Подряд</button>
           <button class="type-btn" data-type="rent">🏠 Аренда</button>
           <button class="type-btn" data-type="nda">🔒 NDA</button>
+          <button class="type-btn" data-type="gph">📊 ГПХ / Лидген</button>
         </div>
         <div class="country-row">
           <label>Страна:</label>
@@ -290,6 +291,178 @@
         </div>
       </div>
 
+      <!-- ГПХ extra fields -->
+      <div class="step-card" id="step-gph" style="display:none">
+        <div class="step-label">ГПХ — Расширенные данные</div>
+
+        <div class="fields-row" style="margin-bottom:12px">
+          <div class="field" style="max-width:180px">
+            <label>Номер договора</label>
+            <input type="text" id="gph-num" placeholder="1" value="1" />
+          </div>
+          <div class="field" style="max-width:200px">
+            <label>Дата заключения</label>
+            <input type="text" id="gph-date" placeholder="14 марта 2026 года" />
+          </div>
+          <div class="field">
+            <label>Город</label>
+            <input type="text" id="gph-city" placeholder="Астана" />
+          </div>
+        </div>
+
+        <div class="gph-section-title">Заказчик (ИП)</div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:10px">
+          <div class="field" style="flex:2; min-width:200px">
+            <label>ФИО полностью</label>
+            <input type="text" id="gph-a-name" placeholder="Куфельд Радион Владимирович" />
+          </div>
+          <div class="field" style="flex:1; min-width:140px">
+            <label>ИИН</label>
+            <input type="text" id="gph-a-iin" placeholder="071002551519" />
+          </div>
+        </div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:10px">
+          <div class="field" style="flex:1; min-width:200px">
+            <label>Коммерческое название</label>
+            <input type="text" id="gph-a-brand" placeholder="Work Work Studio" />
+          </div>
+          <div class="field" style="flex:2; min-width:200px">
+            <label>Адрес</label>
+            <input type="text" id="gph-a-address" placeholder="Казахстан, г. Астана, ул. Арнасай, 10/6, кв. 93" />
+          </div>
+        </div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:10px">
+          <div class="field" style="flex:1">
+            <label>Email</label>
+            <input type="text" id="gph-a-email" placeholder="workworkstudio.company@gmail.com" />
+          </div>
+          <div class="field" style="flex:1">
+            <label>WhatsApp / Телефон</label>
+            <input type="text" id="gph-a-phone" placeholder="+7 778 239 6819" />
+          </div>
+          <div class="field" style="flex:1">
+            <label>Telegram</label>
+            <input type="text" id="gph-a-tg" placeholder="@workworkstudio_manager" />
+          </div>
+        </div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:18px">
+          <div class="field" style="flex:1; min-width:200px">
+            <label>Банк 1 (название, БИК, счёт)</label>
+            <textarea id="gph-a-bank1" rows="2" placeholder="АО «Kaspi Bank», БИК: CASPKZKA, KZ39722S000051936335"></textarea>
+          </div>
+          <div class="field" style="flex:1; min-width:200px">
+            <label>Банк 2 (опционально)</label>
+            <textarea id="gph-a-bank2" rows="2" placeholder="ДО АО Банк ВТБ (Казахстан), БИК: VTBAKZKZ, KZ684322204398C56969"></textarea>
+          </div>
+        </div>
+
+        <div class="gph-section-title">Исполнитель (физлицо)</div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:10px">
+          <div class="field" style="flex:2; min-width:200px">
+            <label>ФИО полностью</label>
+            <input type="text" id="gph-b-name" placeholder="Терентьев Максим Анатольевич" />
+          </div>
+          <div class="field" style="flex:1; min-width:160px">
+            <label>Паспорт (серия, номер)</label>
+            <input type="text" id="gph-b-passport" placeholder="6023 №476896" />
+          </div>
+        </div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:10px">
+          <div class="field" style="flex:2; min-width:200px">
+            <label>Кем выдан</label>
+            <input type="text" id="gph-b-issued-by" placeholder="ГУ МВД России по Ростовской области" />
+          </div>
+          <div class="field" style="flex:1; min-width:120px">
+            <label>Дата выдачи</label>
+            <input type="text" id="gph-b-issued-date" placeholder="21.01.2023" />
+          </div>
+          <div class="field" style="flex:1; min-width:120px">
+            <label>Код подразделения</label>
+            <input type="text" id="gph-b-dept" placeholder="610-068" />
+          </div>
+        </div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:10px">
+          <div class="field" style="flex:1; min-width:120px">
+            <label>Дата рождения</label>
+            <input type="text" id="gph-b-dob" placeholder="23.01.1987" />
+          </div>
+          <div class="field" style="flex:2; min-width:180px">
+            <label>Место рождения</label>
+            <input type="text" id="gph-b-pob" placeholder="г. Донецк, Донецкая область, СССР" />
+          </div>
+          <div class="field" style="flex:2; min-width:180px">
+            <label>Адрес проживания</label>
+            <input type="text" id="gph-b-address" placeholder="г. Донецк" />
+          </div>
+        </div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:10px">
+          <div class="field" style="flex:1">
+            <label>Email</label>
+            <input type="text" id="gph-b-email" placeholder="mprivate24@gmail.com" />
+          </div>
+          <div class="field" style="flex:1">
+            <label>Телефон / WhatsApp</label>
+            <input type="text" id="gph-b-phone" placeholder="+79895302168" />
+          </div>
+          <div class="field" style="flex:1">
+            <label>Telegram</label>
+            <input type="text" id="gph-b-tg" placeholder="@mdsa_b2b" />
+          </div>
+        </div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:18px">
+          <div class="field" style="flex:2; min-width:200px">
+            <label>Банковские реквизиты исполнителя</label>
+            <textarea id="gph-b-bank" rows="3" placeholder="Банк ВТБ (ПАО), БИК: 044525745, р/с: 40817810890079490186, к/с: 30101810345250000745"></textarea>
+          </div>
+        </div>
+
+        <div class="gph-section-title">Условия вознаграждения</div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px; margin-bottom:10px">
+          <div class="field">
+            <label>Комиссия 1–2 договор</label>
+            <div class="percent-input-wrap">
+              <input type="number" id="gph-rate1" value="10" min="0" max="100" />
+              <span class="percent-sign">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Комиссия 3–4 договор</label>
+            <div class="percent-input-wrap">
+              <input type="number" id="gph-rate2" value="20" min="0" max="100" />
+              <span class="percent-sign">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Комиссия 5+ договор</label>
+            <div class="percent-input-wrap">
+              <input type="number" id="gph-rate3" value="30" min="0" max="100" />
+              <span class="percent-sign">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>ИПН (на стороне заказчика)</label>
+            <div class="percent-input-wrap">
+              <input type="number" id="gph-ipn" value="20" min="0" max="100" />
+              <span class="percent-sign">%</span>
+            </div>
+          </div>
+        </div>
+        <div class="fields-row" style="flex-wrap:wrap; gap:10px">
+          <div class="field" style="max-width:180px">
+            <label>Lead Lock (дней)</label>
+            <input type="number" id="gph-leadlock" value="90" min="1" />
+          </div>
+          <div class="field" style="max-width:220px">
+            <label>Договор действует до</label>
+            <input type="text" id="gph-until" value="31.12.2026" placeholder="31.12.2026" />
+          </div>
+          <div class="field" style="max-width:220px">
+            <label>Штраф за разглашение (тенге)</label>
+            <input type="number" id="gph-fine" value="500000" />
+          </div>
+        </div>
+      </div>
+
       <!-- Generate -->
       <div class="step-card generate-card">
         <button class="btn btn--primary btn--large" id="generate-btn">
@@ -356,6 +529,15 @@
           </div>
         </div>
         <div class="tax-desc-row" id="tax-desc"></div>
+        <div id="custom-rate-row" style="display:none; margin-top:10px">
+          <div class="field" style="max-width:200px">
+            <label>Процент налога</label>
+            <div class="percent-input-wrap">
+              <input type="number" id="custom-rate" min="0" max="100" step="0.5" value="5" oninput="recalc()" />
+              <span class="percent-sign">%</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Участники -->

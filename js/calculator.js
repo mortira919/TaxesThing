@@ -21,6 +21,8 @@ function updateTaxDesc() {
   const regimes = getTaxRegimes(country);
   const regime  = regimes.find(r => r.id === regId);
   document.getElementById('tax-desc').textContent = regime?.desc || '';
+  const customRow = document.getElementById('custom-rate-row');
+  if (customRow) customRow.style.display = regId === 'custom' ? 'block' : 'none';
 }
 
 function toggleIpOwner() {
@@ -115,7 +117,8 @@ function recalc() {
   const currency = document.getElementById('calc-currency').value;
   const country  = document.getElementById('calc-country').value;
   const regId    = document.getElementById('global-tax').value;
-  const isSingle = document.getElementById('single-ip-mode')?.value === 'single';
+  const isSingle   = document.getElementById('single-ip-mode')?.value === 'single';
+  const customRate = parseFloat(document.getElementById('custom-rate')?.value) || 5;
 
   const usedPercent = people.reduce((s, p) => s + (parseFloat(p.percent) || 0), 0);
   const warn = document.getElementById('percent-warning');
@@ -144,7 +147,7 @@ function recalc() {
     // Одно ИП платит налоги со всей суммы
     const ipOwnerId = parseInt(document.getElementById('ip-owner-select')?.value);
     const ipOwner   = people.find(p => p.id === ipOwnerId) || people[0];
-    const taxResult = calcTax(regId, total, country);
+    const taxResult = calcTax(regId, total, country, customRate);
     const netTotal  = taxResult.net;
 
     totalTax = taxResult.total_tax;
@@ -208,7 +211,7 @@ function recalc() {
     // Каждый платит налоги сам со своей доли
     rows = people.map((p, i) => {
       const share  = total * ((parseFloat(p.percent) || 0) / 100);
-      const result = calcTax(regId, share, country);
+      const result = calcTax(regId, share, country, customRate);
 
       totalNet += result.net;
       totalTax += result.total_tax;
@@ -257,8 +260,9 @@ function exportCalcPDF() {
   const currency = document.getElementById('calc-currency').value;
   const country  = document.getElementById('calc-country').value;
   const regId    = document.getElementById('global-tax').value;
-  const isSingle = document.getElementById('single-ip-mode')?.value === 'single';
-  const regimes  = getTaxRegimes(country);
+  const isSingle   = document.getElementById('single-ip-mode')?.value === 'single';
+  const customRate = parseFloat(document.getElementById('custom-rate')?.value) || 5;
+  const regimes    = getTaxRegimes(country);
   const regime   = regimes.find(r => r.id === regId);
 
   let totalNet = 0;
@@ -269,7 +273,7 @@ function exportCalcPDF() {
   if (isSingle) {
     const ipOwnerId = parseInt(document.getElementById('ip-owner-select')?.value);
     const ipOwner   = people.find(p => p.id === ipOwnerId) || people[0];
-    const taxResult = calcTax(regId, total, country);
+    const taxResult = calcTax(regId, total, country, customRate);
     const netTotal  = taxResult.net;
 
     totalTax = taxResult.total_tax;
@@ -309,7 +313,7 @@ function exportCalcPDF() {
   } else {
     tableRows = people.map((p, i) => {
       const share  = total * ((parseFloat(p.percent) || 0) / 100);
-      const result = calcTax(regId, share, country);
+      const result = calcTax(regId, share, country, customRate);
       totalNet += result.net;
       totalTax += result.total_tax;
       const taxStr = result.taxes.map(t => `${t.name}: ${fmt(t.amount)} ${currency}`).join(' | ');
