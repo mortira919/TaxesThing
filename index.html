@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocGen — Договоры и расчёты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo">
+        <i data-lucide="file-pen-line" class="logo__icon"></i>
+        Doc<span>Gen</span>
+      </div>
+      <nav class="nav">
+        <button class="nav__btn active" data-tab="home">Главная</button>
+        <button class="nav__btn" data-tab="contracts">Договоры</button>
+        <button class="nav__btn" data-tab="calculator">Калькулятор</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <section id="tab-home" class="tab active">
+
+    <!-- HERO -->
+    <div class="lp-hero">
+      <div class="lp-orb lp-orb--1"></div>
+      <div class="lp-orb lp-orb--2"></div>
+      <div class="lp-orb lp-orb--3"></div>
+      <div class="lp-hero__inner container">
+        <div class="lp-badge">
+          <span class="lp-badge__dot"></span>
+          🇰🇿 Казахстан &nbsp;·&nbsp; 🇷🇺 Россия
+        </div>
+        <h1 class="lp-title">
+          Договоры и расчёты —<br>
+          <span class="lp-title__grad">готовы мгновенно</span>
+        </h1>
+        <p class="lp-sub">Генерируй юридические договоры и рассчитывай выплаты с налогами.<br>Без юристов, без бухгалтеров, без лишних вопросов.</p>
+        <div class="lp-actions">
+          <button class="lp-btn lp-btn--primary" onclick="switchTab('contracts')">
+            <i data-lucide="file-pen-line"></i> Создать договор
+          </button>
+          <button class="lp-btn lp-btn--ghost" onclick="switchTab('calculator')">
+            <i data-lucide="calculator"></i> Рассчитать выплаты
+          </button>
+        </div>
+        <div class="lp-floating-tags">
+          <div class="lp-tag lp-tag--1">ИП Патент 15%</div>
+          <div class="lp-tag lp-tag--2">PDF за секунду</div>
+          <div class="lp-tag lp-tag--3">NDA</div>
+          <div class="lp-tag lp-tag--4">Договор подряда</div>
+          <div class="lp-tag lp-tag--5">% от сделки</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="lp-stats">
+      <div class="container lp-stats__inner">
+        <div class="lp-stat">
+          <div class="lp-stat__num" data-target="5">0</div>
+          <div class="lp-stat__label">типов договоров</div>
+        </div>
+        <div class="lp-stat-divider"></div>
+        <div class="lp-stat">
+          <div class="lp-stat__num" data-target="7">0</div>
+          <div class="lp-stat__label">налоговых режимов</div>
+        </div>
+        <div class="lp-stat-divider"></div>
+        <div class="lp-stat">
+          <div class="lp-stat__num" data-target="2">0</div>
+          <div class="lp-stat__label">страны</div>
+        </div>
+        <div class="lp-stat-divider"></div>
+        <div class="lp-stat">
+          <div class="lp-stat__num">0₸</div>
+          <div class="lp-stat__label">стоимость сервиса</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BENTO -->
+    <div class="container lp-bento">
+
+      <div class="lp-bento__card lp-bento__card--big lp-reveal">
+        <div class="lp-bento__tag">Главное</div>
+        <h2 class="lp-bento__title">Генератор договоров</h2>
+        <p class="lp-bento__text">Оказание услуг, купля-продажа, подряд, аренда, NDA — выбираешь шаблон, заполняешь данные сторон и скачиваешь готовый PDF.</p>
+        <div class="lp-bento__types">
+          <span>📋 Услуги</span><span>🛒 Купля-продажа</span><span>🔨 Подряд</span><span>🏠 Аренда</span><span>🔒 NDA</span>
+        </div>
+        <button class="lp-btn lp-btn--primary lp-bento__cta" onclick="switchTab('contracts')">Открыть →</button>
+        <div class="lp-bento__glow lp-bento__glow--blue"></div>
+      </div>
+
+      <div class="lp-bento__card lp-reveal" style="--delay:0.1s">
+        <div class="lp-bento__tag">Деньги</div>
+        <h2 class="lp-bento__title">Калькулятор выплат</h2>
+        <p class="lp-bento__text">Укажи сумму, добавь участников с долями в %. Налоги вычтутся автоматически — видишь кто сколько получит на руки.</p>
+        <button class="lp-btn lp-btn--ghost lp-bento__cta" onclick="switchTab('calculator')">Рассчитать →</button>
+        <div class="lp-bento__glow lp-bento__glow--purple"></div>
+      </div>
+
+
+<div class="lp-bento__card lp-bento__card--wide lp-reveal" style="--delay:0.15s">
+        <div class="lp-bento__tag">Налоги</div>
+        <div class="lp-bento__regimes">
+          <div class="lp-regime">
+            <div class="lp-regime__flag">🇰🇿</div>
+            <div>
+              <div class="lp-regime__country">Казахстан</div>
+              <div class="lp-regime__list">ИП Патент · ИП ОУР · ТОО · Физлицо</div>
+            </div>
+          </div>
+          <div class="lp-regime-sep"></div>
+          <div class="lp-regime">
+            <div class="lp-regime__flag">🇷🇺</div>
+            <div>
+              <div class="lp-regime__country">Россия</div>
+              <div class="lp-regime__list">Самозанятый · ИП УСН 6% · ИП УСН 15% · ОСНО · НДФЛ</div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-bento__glow lp-bento__glow--blue"></div>
+      </div>
+
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="lp-how">
+      <div class="container">
+        <div class="lp-section-label">Как это работает</div>
+        <h2 class="lp-section-title">Три шага до результата</h2>
+        <div class="lp-steps">
+          <div class="lp-step lp-reveal">
+            <div class="lp-step__num">01</div>
+            <i data-lucide="mouse-pointer-click" class="lp-step__icon"></i>
+            <h3>Выбери тип</h3>
+            <p>Договор услуг, подряда, аренды или NDA — выбери нужный шаблон и страну</p>
+          </div>
+          <div class="lp-step__arrow"><i data-lucide="arrow-right"></i></div>
+          <div class="lp-step lp-reveal" style="--delay:0.1s">
+            <div class="lp-step__num">02</div>
+            <i data-lucide="pen-line" class="lp-step__icon"></i>
+            <h3>Заполни данные</h3>
+            <p>Имена сторон, сумма, сроки, условия — форма простая и понятная</p>
+          </div>
+          <div class="lp-step__arrow"><i data-lucide="arrow-right"></i></div>
+          <div class="lp-step lp-reveal" style="--delay:0.2s">
+            <div class="lp-step__num">03</div>
+            <i data-lucide="download" class="lp-step__icon"></i>
+            <h3>Скачай PDF</h3>
+            <p>Готовый договор или расчёт открывается в браузере — распечатай или сохрани</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="lp-cta">
+      <div class="lp-orb lp-orb--cta1"></div>
+      <div class="lp-orb lp-orb--cta2"></div>
+      <div class="container lp-cta__inner">
+        <h2 class="lp-cta__title">Попробуй прямо сейчас</h2>
+        <p class="lp-cta__sub">Бесплатно. Без регистрации. Работает в браузере.</p>
+        <div class="lp-actions">
+          <button class="lp-btn lp-btn--primary" onclick="switchTab('contracts')">
+            <i data-lucide="file-pen-line"></i> Создать договор
+          </button>
+          <button class="lp-btn lp-btn--ghost" onclick="switchTab('calculator')">
+            <i data-lucide="calculator"></i> Калькулятор выплат
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CONTRACTS -->
+  <section id="tab-contracts" class="tab">
+    <div class="container section-title">
+      <h2>Генератор договоров</h2>
+      <p>Выберите тип договора и заполните данные сторон</p>
+    </div>
+
+    <div class="container contracts-layout">
+
+      <!-- Step 1: type -->
+      <div class="step-card" id="step-type">
+        <div class="step-label">Шаг 1 — Тип договора</div>
+        <div class="type-grid">
+          <button class="type-btn active" data-type="services">📋 Оказание услуг</button>
+          <button class="type-btn" data-type="sale">🛒 Купля-продажа</button>
+          <button class="type-btn" data-type="work">🔨 Подряд</button>
+          <button class="type-btn" data-type="rent">🏠 Аренда</button>
+          <button class="type-btn" data-type="nda">🔒 NDA</button>
+        </div>
+        <div class="country-row">
+          <label>Страна:</label>
+          <select id="contract-country">
+            <option value="kz">🇰🇿 Казахстан</option>
+            <option value="ru">🇷🇺 Россия</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Step 2: parties -->
+      <div class="step-card">
+        <div class="step-label">Шаг 2 — Стороны</div>
+        <div class="parties-grid">
+          <div class="party-block">
+            <div class="party-title">Исполнитель / Продавец</div>
+            <input type="text" id="party-a-name" placeholder="ФИО или название организации" />
+            <input type="text" id="party-a-id" placeholder="ИИН / БИН / ИНН" />
+            <input type="text" id="party-a-address" placeholder="Адрес" />
+            <input type="text" id="party-a-phone" placeholder="Телефон" />
+          </div>
+          <div class="party-block">
+            <div class="party-title">Заказчик / Покупатель</div>
+            <input type="text" id="party-b-name" placeholder="ФИО или название организации" />
+            <input type="text" id="party-b-id" placeholder="ИИН / БИН / ИНН" />
+            <input type="text" id="party-b-address" placeholder="Адрес" />
+            <input type="text" id="party-b-phone" placeholder="Телефон" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: terms -->
+      <div class="step-card">
+        <div class="step-label">Шаг 3 — Условия</div>
+        <div class="terms-grid">
+          <div class="field">
+            <label>Предмет договора</label>
+            <textarea id="contract-subject" rows="3" placeholder="Исполнитель обязуется оказать услуги по..."></textarea>
+          </div>
+          <div class="fields-row">
+            <div class="field" id="amount-field">
+              <label id="amount-label">Сумма договора</label>
+              <input type="number" id="contract-amount" placeholder="0" />
+              <div class="field-hint" id="amount-hint" style="display:none">Необязательно. Можно указать максимальный лимит договора — например ожидаемый оборот за период</div>
+            </div>
+            <div class="field">
+              <label>Валюта</label>
+              <select id="contract-currency">
+                <option value="тенге">тенге (KZT)</option>
+                <option value="рублей">рублей (RUB)</option>
+                <option value="USD">USD</option>
+              </select>
+            </div>
+          </div>
+          <div class="fields-row">
+            <div class="field">
+              <label>Срок исполнения</label>
+              <input type="text" id="contract-deadline" placeholder="до 01.06.2026" />
+            </div>
+            <div class="field">
+              <label>Город заключения</label>
+              <input type="text" id="contract-city" placeholder="Алматы" />
+              <div class="field-hint">Онлайн-договор? Укажи город регистрации ИП/компании или напиши «Дистанционно»</div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Порядок оплаты</label>
+            <select id="contract-payment" onchange="toggleCommission(this.value)">
+              <option value="100% предоплата">100% предоплата</option>
+              <option value="50% предоплата, 50% по завершении">50/50</option>
+              <option value="оплата по факту выполнения">По факту</option>
+              <option value="ежемесячно">Ежемесячно</option>
+              <option value="commission">% от каждой сделки (комиссия)</option>
+            </select>
+          </div>
+          <div class="field commission-row" id="commission-row" style="display:none">
+            <label>Размер комиссии (%)</label>
+            <div class="percent-input-wrap" style="max-width:160px">
+              <input type="number" id="commission-rate" min="1" max="100" step="0.5" placeholder="10" />
+              <span class="percent-sign">%</span>
+            </div>
+            <div class="field-hint">В договоре будет прописано: «Вознаграждение составляет X% от суммы каждой закрытой сделки»</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generate -->
+      <div class="step-card generate-card">
+        <button class="btn btn--primary btn--large" id="generate-btn">
+          Сгенерировать договор (PDF)
+        </button>
+        <p class="hint">Договор откроется в новой вкладке для печати или скачивания</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="tab-calculator" class="tab">
+    <div class="container section-title">
+      <h2>Калькулятор выплат</h2>
+      <p>Общая сумма делится по процентам — налоги вычитаются у каждого из своей доли</p>
+    </div>
+
+    <div class="container calc-layout">
+
+      <!-- Сумма + налоговый режим (один на всех) -->
+      <div class="step-card">
+        <div class="step-label">Сумма и налоговый режим</div>
+        <div class="fields-row">
+          <div class="field" style="flex:2">
+            <label>Общая сумма сделки</label>
+            <input type="number" id="total-amount" placeholder="1 000 000" oninput="recalc()" />
+          </div>
+          <div class="field">
+            <label>Валюта</label>
+            <select id="calc-currency" onchange="recalc()">
+              <option value="₸">₸ тенге</option>
+              <option value="₽">₽ рублей</option>
+              <option value="$">$ USD</option>
+            </select>
+          </div>
+        </div>
+        <div class="fields-row" style="margin-top:12px">
+          <div class="field">
+            <label>Страна</label>
+            <select id="calc-country" onchange="updateTaxOptions(); recalc()">
+              <option value="kz">🇰🇿 Казахстан</option>
+              <option value="ru">🇷🇺 Россия</option>
+            </select>
+          </div>
+          <div class="field" style="flex:2">
+            <label>Налоговый режим</label>
+            <select id="global-tax" onchange="recalc()"></select>
+          </div>
+        </div>
+        <div class="fields-row" style="margin-top:12px">
+          <div class="field" style="flex:2">
+            <label>Способ налогообложения</label>
+            <select id="single-ip-mode" onchange="toggleIpOwner(); recalc()">
+              <option value="separate">Каждый участник платит налоги самостоятельно</option>
+              <option value="single">Вся сумма приходит на одно ИП — оно платит налоги, остаток делится по долям</option>
+            </select>
+          </div>
+        </div>
+        <div class="fields-row ip-owner-row" id="ip-owner-row" style="display:none; margin-top:10px">
+          <div class="field" style="flex:2">
+            <label>Чьё ИП принимает оплату?</label>
+            <select id="ip-owner-select" onchange="recalc()"></select>
+          </div>
+        </div>
+        <div class="tax-desc-row" id="tax-desc"></div>
+      </div>
+
+      <!-- Участники -->
+      <div class="step-card">
+        <div class="step-label">Участники и их доли</div>
+        <div id="people-list"></div>
+        <div class="people-footer">
+          <button class="btn btn--ghost btn--sm" onclick="addPerson()">+ Добавить участника</button>
+          <div class="percent-warning" id="percent-warning"></div>
+        </div>
+      </div>
+
+      <!-- Результат -->
+      <div class="step-card" id="result-card" style="display:none">
+        <div class="step-label">Результат</div>
+        <div id="single-ip-summary-wrap"></div>
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>Участник</th>
+              <th>Доля %</th>
+              <th>Брутто</th>
+              <th>Налоги</th>
+              <th>На руки</th>
+            </tr>
+          </thead>
+          <tbody id="result-body"></tbody>
+        </table>
+        <div class="result-total" id="result-total"></div>
+        <button class="btn btn--primary" onclick="exportCalcPDF()" style="margin-top:16px">Скачать PDF</button>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.lp-reveal').forEach(el => observer.observe(el));
+
+      // Stats counter
+      const counters = document.querySelectorAll('.lp-stat__num[data-target]');
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          const target = +el.dataset.target;
+          let cur = 0;
+          const step = Math.ceil(target / 30);
+          const t = setInterval(() => {
+            cur = Math.min(cur + step, target);
+            el.textContent = cur;
+            if (cur >= target) clearInterval(t);
+          }, 40);
+          statsObserver.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(el => statsObserver.observe(el));
+    });
+  </script>
+  <script src="js/taxes.js"></script>
+  <script src="js/contracts.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
