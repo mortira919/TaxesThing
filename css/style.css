@@ -277,8 +277,8 @@ textarea { resize: vertical; }
 
 /* TERMS */
 .terms-grid { display: flex; flex-direction: column; gap: 12px; }
-.fields-row { display: flex; gap: 12px; }
-.fields-row .field { flex: 1; }
+.fields-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.fields-row .field { flex: 1; min-width: 140px; }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
 
@@ -289,6 +289,12 @@ textarea { resize: vertical; }
   flex-direction: column;
   align-items: center;
   gap: 12px;
+}
+.generate-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .hint { font-size: 13px; color: var(--text-muted); }
 .field-hint {
@@ -513,6 +519,104 @@ textarea { resize: vertical; }
   font-size: 14px;
 }
 .result-total strong { font-size: 18px; color: var(--success); }
+
+/* ========================
+   MOBILE RESPONSIVE
+   ======================== */
+
+@media (max-width: 768px) {
+
+  /* Header */
+  .header__inner { padding: 0 16px; }
+  .nav__btn { padding: 6px 10px; font-size: 13px; }
+  .logo { font-size: 17px; }
+
+  /* Container */
+  .container { padding: 0 16px; }
+
+  /* Section titles */
+  .section-title { padding: 32px 16px 20px; }
+  .section-title h2 { font-size: 22px; }
+
+  /* Step cards */
+  .step-card { padding: 16px; }
+  .contracts-layout, .calc-layout { padding-bottom: 48px; gap: 12px; }
+
+  /* Type buttons */
+  .type-grid { gap: 6px; }
+  .type-btn { padding: 7px 12px; font-size: 13px; }
+
+  /* fields-row stack on mobile */
+  .fields-row { flex-direction: column; gap: 10px; }
+  .fields-row .field { min-width: unset; }
+
+  /* Result table — horizontal scroll */
+  .result-table { font-size: 12px; display: block; overflow-x: auto; white-space: nowrap; }
+  .result-table th, .result-table td { padding: 8px; }
+
+  /* Result total */
+  .result-total { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+  /* Person rows */
+  .person-row { flex-wrap: wrap; gap: 8px; }
+  .field--percent { max-width: unset !important; }
+
+  /* Single IP summary */
+  .sip-row { font-size: 12px; }
+
+  /* Buttons */
+  .btn--large { padding: 12px 20px; font-size: 14px; }
+  .lp-btn { padding: 11px 20px; font-size: 14px; }
+
+  /* GPH form */
+  #step-gph .fields-row { flex-direction: row; flex-wrap: wrap; }
+  #step-gph .fields-row .field { min-width: 140px; }
+}
+
+@media (max-width: 480px) {
+
+  /* Nav — иконки вместо текста на совсем малых */
+  .nav__btn { padding: 6px 8px; font-size: 12px; }
+  .logo__icon { width: 22px; height: 22px; }
+  .logo { font-size: 15px; gap: 6px; }
+
+  /* Type grid — 2 колонки */
+  .type-grid { display: grid; grid-template-columns: 1fr 1fr; }
+
+  /* Person rows stack */
+  .person-row { flex-direction: column; align-items: stretch; }
+  .person-num { align-self: flex-start; }
+  .remove-btn { align-self: flex-end; margin-top: -32px; }
+
+  /* GPH fields full width */
+  #step-gph .fields-row .field { min-width: 100%; }
+
+  /* Bento in landing */
+  .lp-bento { padding: 40px 16px; gap: 12px; }
+  .lp-bento__card { padding: 20px; }
+  .lp-bento__title { font-size: 18px; }
+
+  /* Stats compact */
+  .lp-stats__inner { gap: 0; flex-wrap: wrap; justify-content: space-around; }
+  .lp-stat { padding: 10px 14px; }
+  .lp-stat__num { font-size: 32px; }
+
+  /* Hero */
+  .lp-hero__inner { padding-top: 48px; padding-bottom: 60px; }
+  .lp-title { letter-spacing: -1px; }
+  .lp-sub { font-size: 14px; }
+  .lp-actions { flex-direction: column; align-items: center; }
+  .lp-actions .lp-btn { width: 100%; max-width: 300px; justify-content: center; }
+
+  /* How it works */
+  .lp-steps { flex-direction: column; align-items: center; gap: 24px; }
+  .lp-step__arrow { display: none; }
+  .lp-step { max-width: 280px; }
+
+  /* CTA */
+  .lp-cta { padding: 60px 0; }
+  .lp-cta__title { font-size: 26px; }
+}
 
 .gph-section-title {
   font-size: 11px;

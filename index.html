@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/landing.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
 </head>
 <body>
 
@@ -465,10 +466,15 @@
 
       <!-- Generate -->
       <div class="step-card generate-card">
-        <button class="btn btn--primary btn--large" id="generate-btn">
-          Сгенерировать договор (PDF)
-        </button>
-        <p class="hint">Договор откроется в новой вкладке для печати или скачивания</p>
+        <div class="generate-btns">
+          <button class="btn btn--primary btn--large" id="generate-btn">
+            Сгенерировать договор (PDF)
+          </button>
+          <button class="btn btn--ghost btn--large" id="generate-docx-btn">
+            Скачать DOCX
+          </button>
+        </div>
+        <p class="hint">PDF открывается в новой вкладке для печати · DOCX скачивается сразу</p>
       </div>
 
     </div>
@@ -567,7 +573,10 @@
           <tbody id="result-body"></tbody>
         </table>
         <div class="result-total" id="result-total"></div>
-        <button class="btn btn--primary" onclick="exportCalcPDF()" style="margin-top:16px">Скачать PDF</button>
+        <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap">
+          <button class="btn btn--primary" onclick="exportCalcPDF()">Скачать PDF</button>
+          <button class="btn btn--ghost" onclick="exportCalcDocx()">Скачать DOCX</button>
+        </div>
       </div>
 
     </div>

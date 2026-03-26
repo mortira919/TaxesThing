@@ -254,8 +254,11 @@ function recalc() {
   document.getElementById('result-card').style.display = 'block';
 }
 
-// Экспорт PDF через печать
-function exportCalcPDF() {
+// Экспорт PDF / DOCX
+function exportCalcPDF() { _exportCalc(false); }
+function exportCalcDocx() { _exportCalc(true); }
+
+function _exportCalc(asDocx) {
   const total    = parseFloat(document.getElementById('total-amount').value) || 0;
   const currency = document.getElementById('calc-currency').value;
   const country  = document.getElementById('calc-country').value;
@@ -409,7 +412,11 @@ function exportCalcPDF() {
 </body>
 </html>`;
 
-  const win = window.open('', '_blank');
-  win.document.write(html);
-  win.document.close();
+  if (asDocx) {
+    downloadDocx(html, 'Расчёт_выплат.docx');
+  } else {
+    const win = window.open('', '_blank');
+    win.document.write(html);
+    win.document.close();
+  }
 }

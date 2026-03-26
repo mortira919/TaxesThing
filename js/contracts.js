@@ -311,11 +311,11 @@ const CONTRACT_TEMPLATES = {
   }
 };
 
-function generateContract() {
+function generateContract(asDocx = false) {
   const country = document.getElementById('contract-country').value;
   const type    = document.querySelector('.type-btn.active')?.dataset.type || 'services';
 
-  if (type === 'gph') { generateGph(); return; }
+  if (type === 'gph') { generateGph(asDocx); return; }
 
   const template = CONTRACT_TEMPLATES[country]?.[type];
   if (!template) { alert('Шаблон не найден'); return; }
@@ -443,14 +443,18 @@ function generateContract() {
 </body>
 </html>`;
 
-  const win = window.open('', '_blank');
-  win.document.write(html);
-  win.document.close();
+  if (asDocx) {
+    downloadDocx(html, `Договор_${template.title.replace(/\s+/g,'_')}.docx`);
+  } else {
+    const win = window.open('', '_blank');
+    win.document.write(html);
+    win.document.close();
+  }
 }
 
 function g(id) { return (document.getElementById(id)?.value || '').trim(); }
 
-function generateGph() {
+function generateGph(asDocx = false) {
   const num       = g('gph-num') || '1';
   const date      = g('gph-date') || new Date().toLocaleDateString('ru-RU', {day:'numeric',month:'long',year:'numeric'}) + ' года';
   const city      = g('gph-city') || 'Астана';
@@ -646,9 +650,13 @@ function generateGph() {
 </body>
 </html>`;
 
-  const win = window.open('', '_blank');
-  win.document.write(html);
-  win.document.close();
+  if (asDocx) {
+    downloadDocx(html, `ГПХ_№${num}.docx`);
+  } else {
+    const win = window.open('', '_blank');
+    win.document.write(html);
+    win.document.close();
+  }
 }
 
 function numWords(n) {
@@ -694,5 +702,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  document.getElementById('generate-btn').addEventListener('click', generateContract);
+  document.getElementById('generate-btn').addEventListener('click', () => generateContract(false));
+  document.getElementById('generate-docx-btn').addEventListener('click', () => generateContract(true));
 });
